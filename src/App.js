@@ -1,9 +1,11 @@
+import Container from "./components/Container";
 import Navbar from "./components/Navbar";
 
 const App = () => {
   return (
-    <div className="min-h-screen bg-slate-400">
+    <div className="bg-slate-400 flex flex-col h-full">
       <Navbar />
+      <Container />
     </div>
   );
 }

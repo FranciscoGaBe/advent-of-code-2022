@@ -1,12 +1,25 @@
 import { useState } from "react"
+import * as days from '../days'
 
-const days = new Array(25).fill(0).map((_, index) => index + 1)
+export const availableDays = Object.keys(days).reduce((acc, key) => {
+  const day = key.match(/^day(\d+)/)?.[1]
+
+  if (!day) {
+    return acc
+  }
+
+  if (!acc.includes(day)) {
+    acc.push(day)
+  }
+
+  return acc
+}, [])
 
 const Navbar = () => {
   const [show, setShow] = useState(false)
 
   return (
-    <nav className="bg-slate-600 text-white px-4 py-2 shadow-lg sticky top-0 flex gap-4 items-center">
+    <nav className="bg-slate-600 text-white px-4 py-2 shadow-lg flex-shrink-0 top-0 flex gap-4 items-center z-10">
       <h1 className="font-bold uppercase text-xl flex-shrink-0">Advent of Code 2022</h1>
       <button
         type="button"
@@ -22,7 +35,7 @@ const Navbar = () => {
         }
       `}>
         {
-          days.map(day => (
+          availableDays.map(day => (
             <li key={day}>
               <a href={`#day-${day}`} onClick={() => setShow(false)}>Day {day}</a>
             </li>
