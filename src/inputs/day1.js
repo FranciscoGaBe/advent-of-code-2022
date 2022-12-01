@@ -2254,4 +2254,4 @@ export const day1 = `
 3946
 1457
 4469
-`.split('\n')
+`
