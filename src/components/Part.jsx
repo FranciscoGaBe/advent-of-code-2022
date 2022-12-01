@@ -31,7 +31,11 @@ const useExample = (func) => {
     if (result === 'Running...') {
       return
     }
-    setState(result === expectedResult ? 'pass' : 'fail')
+    const newState = result === expectedResult ? 'pass' : 'fail'
+    if (newState === 'fail') {
+      console.error(`Expected ${expectedResult}, got ${result}`)
+    }
+    setState(newState)
   }, [result, expectedResult])
 
   return state
@@ -44,7 +48,7 @@ const Part = ({ func, day }) => {
 
   const code = `const day${day}Part${part} = ${days[func].toString()}
 
-day${day}Part${part}()   // Result: ${result}`
+day${day}Part${part}(input)   // Result: ${result}`
   
   return (
     <div className="text-white my-2">

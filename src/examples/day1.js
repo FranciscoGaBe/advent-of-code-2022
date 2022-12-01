@@ -1,4 +1,5 @@
 export const day1Part1ExampleResult = 24000
+export const day1Part2ExampleResult = 45000
 
 export const day1Part1ExampleInput = `
 1000
@@ -16,3 +17,5 @@ export const day1Part1ExampleInput = `
 
 10000
 `
+
+export const day1Part2ExampleInput = day1Part1ExampleInput
