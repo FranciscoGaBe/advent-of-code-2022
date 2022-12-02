@@ -27,7 +27,7 @@ const Navbar = () => {
         onClick={() => setShow(!show)}
       ><i className={`fa-solid fa-chevron-${ show ? 'up' : 'down' }`}></i></button>
       <ul className={`
-        flex-grow lg:flex gap-1 justify-between lg:text-xs text-center
+        flex-grow lg:flex gap-1 lg:text-xs text-center
         ${ 
           show ? 
           'fixed lg:static top-11 p-4 lg:p-0 text-lg font-semibold inset-0 bg-slate-600/60 flex items-center justify-center flex-col lg:flex-row'
