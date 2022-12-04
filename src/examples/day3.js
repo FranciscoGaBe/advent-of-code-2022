@@ -1,0 +1,12 @@
+export const day3Part1ExampleResult = 157
+export const day3Part2ExampleResult = 70
+
+export const day3Part1ExampleInput = `
+vJrwpWtwJgWrhcsFMMfFFhFp
+jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
+PmmdzqPrVvPwwTWBwg
+wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn
+ttgJtRGJQctTZtZT
+CrZsJsPPZsGzwwsLwLmpwMDw
+`
+export const day3Part2ExampleInput = day3Part1ExampleInput
