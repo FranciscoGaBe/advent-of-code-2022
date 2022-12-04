@@ -41,8 +41,8 @@ const useExample = (func) => {
 }
 
 const Part = ({ func, day }) => {
-  const { result } = useResult(func, inputs[`day${day}`])
-  const { state, refresh } = useExample(func)
+  const { result, refresh } = useResult(func, inputs[`day${day}`])
+  const { state, refresh: refreshExample } = useExample(func)
   const part = func.match(/Part(\d)$/)?.[1]
 
   const code = `const day${day}Part${part} = ${days[func].toString()}
@@ -52,8 +52,22 @@ day${day}Part${part}(input)   // Result: ${result}`
   return (
     <div className="text-white my-2">
       <div className="flex items-center">
-        <h3 className="text-lg font-bold mb-1">Part { part }</h3>
-        <button type="button" className="ml-auto mr-2" onClick={() => refresh()}>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            title="Retry (for debugging purposes)"
+            onClick={() => refresh()}
+          >
+            <i className="fa-solid fa-arrows-rotate" />
+          </button>
+          <h3 className="text-lg font-bold mb-1">Part { part }</h3>
+        </div>
+        <button
+          type="button"
+          className="ml-auto mr-2"
+          title="Retry example (for debugging purposes)"
+          onClick={() => refreshExample()}
+        >
           <i className="fa-solid fa-arrows-rotate" />
         </button>
         <div className="mr-2">Example: </div>
