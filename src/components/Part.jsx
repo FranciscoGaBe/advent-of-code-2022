@@ -6,12 +6,12 @@ import * as days from '../days'
 import * as inputs from '../inputs'
 import * as examples from '../examples'
 
-const useResult = (func, input) => {
+const useResult = (func, input, debug = false) => {
   const [result, setResult] = useState('Running...')
   const refresh = useCallback(async () => {
-    const data = await days[func](input)
+    const data = await days[func](input, debug)
     setResult(data)
-  }, [func, input])
+  }, [func, input, debug])
 
   useEffect(() => {
     refresh()
@@ -21,7 +21,7 @@ const useResult = (func, input) => {
 }
 
 const useExample = (func) => {
-  const { result, refresh } = useResult(func, examples[`${func}ExampleInput`])
+  const { result, refresh } = useResult(func, examples[`${func}ExampleInput`], true)
   const [state, setState] = useState('running')
   
   const expectedResult = examples[`${func}ExampleResult`]
