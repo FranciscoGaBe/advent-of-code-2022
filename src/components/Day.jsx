@@ -3,7 +3,7 @@ import Part from './Part'
 
 const Day = ({ day }) => {
   const parts = Object.keys(days).filter(funcName => {
-    return funcName.indexOf(`day${day}`) === 0
+    return funcName.slice(0, -1) === `day${day}Part`
   })
 
   return (

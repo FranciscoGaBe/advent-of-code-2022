@@ -6,18 +6,18 @@ import * as days from '../days'
 import * as inputs from '../inputs'
 import * as examples from '../examples'
 
-const useResult = (func, input, debug = false) => {
+const useResult = (func, input) => {
   const [result, setResult] = useState('Running...')
-  const refresh = useCallback(async () => {
+  const refresh = useCallback(async (debug = false) => {
     const data = await days[func](input, debug)
     setResult(data)
-  }, [func, input, debug])
+  }, [func, input])
 
   useEffect(() => {
     refresh()
   }, [refresh])
 
-  return { result, refresh }
+  return { result, refresh: () => refresh(true) }
 }
 
 const useExample = (func) => {
@@ -32,7 +32,10 @@ const useExample = (func) => {
     }
     const newState = result === expectedResult ? 'pass' : 'fail'
     if (newState === 'fail') {
-      console.error(`Expected ${expectedResult}, got ${result}`)
+      console.error(`Expected:
+${expectedResult}
+Got:
+${result}`)
     }
     setState(newState)
   }, [result, expectedResult])
@@ -45,9 +48,15 @@ const Part = ({ func, day }) => {
   const { state, refresh: refreshExample } = useExample(func)
   const part = func.match(/Part(\d)$/)?.[1]
 
+  let printResult = `// Result: ${result}`
+  if (typeof result === 'string' && result.split('\n').length) {
+    printResult = result.split('\n').reduce((text, line) => {
+      return text + line + '\n'
+    }, '\n /* Result: \n') + '*/'
+  }
   const code = `const day${day}Part${part} = ${days[func].toString()}
 
-day${day}Part${part}(input)   // Result: ${result}`
+day${day}Part${part}(input)   ${printResult}`
   
   return (
     <div className="text-white my-2">

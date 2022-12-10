@@ -8,12 +8,12 @@ export const availableDays = Object.keys(days).reduce((acc, key) => {
     return acc
   }
 
-  if (!acc.includes(day)) {
-    acc.push(day)
+  if (!acc.includes(parseInt(day))) {
+    acc.push(parseInt(day))
   }
 
   return acc
-}, [])
+}, []).sort((a, b) => a > b ? 1 : -1)
 
 const Navbar = () => {
   const [show, setShow] = useState(false)
