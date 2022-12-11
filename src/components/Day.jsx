@@ -11,7 +11,7 @@ const Day = ({ day }) => {
       <div>
         <h2 className="text-xl text-white white-text-shadow">
           <a
-            href={`https://adventofcode.com/2022/day/${day}`}
+            href={`https://github.com/FranciscoGaBe/advent-of-code-2022/blob/main/src/days/day${day}.js`}
             target="_blank"
             rel="noreferrer"
           >--- Day {day} ---</a>
