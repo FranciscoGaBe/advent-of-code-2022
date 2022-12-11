@@ -18,6 +18,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "homepage": "https://franciscogabe.github.io/advent-of-code-2022/",
   "eslintConfig": {
     "extends": [
       "react-app",
