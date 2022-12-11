@@ -1,4 +1,3 @@
-import { useState } from "react"
 import * as days from '../days'
 
 export const availableDays = Object.keys(days).reduce((acc, key) => {
@@ -16,32 +15,52 @@ export const availableDays = Object.keys(days).reduce((acc, key) => {
 }, []).sort((a, b) => a > b ? 1 : -1)
 
 const Navbar = () => {
-  const [show, setShow] = useState(false)
-
   return (
-    <nav className="bg-slate-600 text-white px-4 py-2 shadow-lg flex-shrink-0 top-0 flex gap-4 items-center z-10">
-      <h1 className="font-bold uppercase text-xl flex-shrink-0">Advent of Code 2022</h1>
-      <button
-        type="button"
-        className="lg:hidden ml-auto bg-slate-700 w-10 h-6 text-sm shadow border-slate-800 border rounded"
-        onClick={() => setShow(!show)}
-      ><i className={`fa-solid fa-chevron-${ show ? 'up' : 'down' }`}></i></button>
-      <ul className={`
-        flex-grow lg:flex gap-1 lg:text-xs text-center
-        ${ 
-          show ? 
-          'fixed lg:static top-11 p-4 lg:p-0 text-lg font-semibold inset-0 bg-slate-600/60 flex items-center justify-center flex-col lg:flex-row'
-          : 'hidden'
-        }
-      `}>
+    <nav
+      className="bg-bg text-text text-lg p-2 shadow-lg shadow-bg flex-shrink-0 flex gap-8 z-10 leading-6"
+    >
+      <h1
+        className="flex-shrink-0 flex flex-col items-end green-text-shadow"
+      >
+        <a
+          className="text-glow hover:text-text-hover"
+          href="https://adventofcode.com/2022"
+          target="_blank"
+          rel="noreferrer"
+        >Advent of Code</a>
+        <div>
+          <span className="opacity-40">const y=</span>
+          <a
+            className="text-glow hover:text-text-hover"
+            href="https://adventofcode.com/2022"
+            target="_blank"
+            rel="noreferrer"
+          >2022</a>
+          <span className="opacity-40">;</span>
+        </div>
+      </h1>
+      <ul className="flex-grow flex flex-wrap gap-x-4 text-center font-light">
         {
           availableDays.map(day => (
             <li key={day}>
-              <a href={`#day-${day}`} onClick={() => setShow(false)}>Day {day}</a>
+              <a
+                className="hover:text-text-hover"
+                href={`#day-${day}`}
+              >[Day {day}]</a>
             </li>
           ))
         }
       </ul>
+      <div className="flex-shrink-0 flex items-center justify-center">
+        <a
+          className="hover:text-text-hover p-2"
+          href="https://github.com/FranciscoGaBe/advent-of-code-2022"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <i className="fa-brands fa-github"></i>
+        </a>
+      </div>
     </nav>
   )
 }

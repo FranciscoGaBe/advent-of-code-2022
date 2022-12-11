@@ -59,9 +59,9 @@ const Part = ({ func, day }) => {
 day${day}Part${part}(input)   ${printResult}`
   
   return (
-    <div className="text-white my-2">
-      <div className="flex items-center">
-        <div className="flex items-center gap-2">
+    <div className="my-2 bg-[#10101a] border border-[#333340] px-4 py-3">
+      <div className="flex items-center mb-2">
+        <div className="flex gap-2">
           <button
             type="button"
             title="Retry (for debugging purposes)"
@@ -69,7 +69,7 @@ day${day}Part${part}(input)   ${printResult}`
           >
             <i className="fa-solid fa-arrows-rotate" />
           </button>
-          <h3 className="text-lg font-bold mb-1">Part { part }</h3>
+          <h3 className="mb-1">Part { part }</h3>
         </div>
         <button
           type="button"

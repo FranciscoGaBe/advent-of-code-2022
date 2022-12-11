@@ -8,9 +8,15 @@ const Day = ({ day }) => {
 
   return (
     <div id={`day-${day}`} className="py-2">
-      <div className="bg-slate-700 rounded-lg shadow-lg px-4 py-2 text-white">
-        <h2 className="text-2xl font-bold">Day {day}</h2>
-        <div className='p-2'>
+      <div>
+        <h2 className="text-xl text-white white-text-shadow">
+          <a
+            href={`https://adventofcode.com/2022/day/${day}`}
+            target="_blank"
+            rel="noreferrer"
+          >--- Day {day} ---</a>
+        </h2>
+        <div>
           {
             parts.map(funcName => (
               <Part key={funcName} func={funcName} day={day} />

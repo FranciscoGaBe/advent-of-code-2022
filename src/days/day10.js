@@ -11,9 +11,6 @@ export const day10Part1 = (input, debug) => {
     if (endCycle > nextCheck) {
       state.checks.shift()
       state.total += state.x * nextCheck
-      if (debug) {
-        console.log(nextCheck, state.x, state.total)
-      }
     }
     if (name === 'addx') {
       state.x += parseInt(value)

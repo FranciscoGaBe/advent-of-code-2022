@@ -3,7 +3,7 @@ import Navbar from "./components/Navbar";
 
 const App = () => {
   return (
-    <div className="bg-slate-400 flex flex-col h-full">
+    <div className="bg-bg flex flex-col h-full">
       <Navbar />
       <Container />
     </div>
