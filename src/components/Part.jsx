@@ -6,7 +6,7 @@ import * as days from '../days'
 import * as inputs from '../inputs'
 import * as examples from '../examples'
 
-const useResult = (func, input) => {
+const useResult = (play, func, input) => {
   const [result, setResult] = useState('Running...')
   const refresh = useCallback(async (debug = false) => {
     const data = await days[func](input, debug)
@@ -14,14 +14,16 @@ const useResult = (func, input) => {
   }, [func, input])
 
   useEffect(() => {
-    refresh()
-  }, [refresh])
+    if (play) {
+      refresh()
+    }
+  }, [refresh, play])
 
   return { result, refresh: () => refresh(true) }
 }
 
-const useExample = (func) => {
-  const { result, refresh } = useResult(func, examples[`${func}ExampleInput`], true)
+const useExample = (play, func) => {
+  const { result, refresh } = useResult(play, func, examples[`${func}ExampleInput`])
   const [state, setState] = useState('running')
   
   const expectedResult = examples[`${func}ExampleResult`]
@@ -43,9 +45,9 @@ ${result}`)
   return { state, refresh }
 }
 
-const Part = ({ func, day }) => {
-  const { result, refresh } = useResult(func, inputs[`day${day}`])
-  const { state, refresh: refreshExample } = useExample(func)
+const Part = ({ func, day, play }) => {
+  const { result, refresh } = useResult(play, func, inputs[`day${day}`])
+  const { state, refresh: refreshExample } = useExample(play, func)
   const part = func.match(/Part(\d)$/)?.[1]
 
   let printResult = `// Result: ${result}`
